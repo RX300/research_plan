@@ -4,9 +4,9 @@
 
 # 研究背景
 
-近年、 **3D Gaussian Splatting** （3DGS）[`<sup>`1`</sup>`](#refer-anchor-1)は、微分可能レンダリングの分野における画期的な技術として、レンダリングの品質と効率を著しく向上させました。本技術は人工知能との融合により、3Dコンテンツ生成といった最先端分野で基盤技術となっており、その高精度・高効率という特性は、医用データの可視化においても大きな応用ポテンシャルを示しています。
+近年、 **3D Gaussian Splatting** （3DGS）[<sup>1</sup>](#refer-anchor-1)は、微分可能レンダリングの分野における画期的な技術として、レンダリングの品質と効率を著しく向上させました。本技術は人工知能との融合により、3Dコンテンツ生成といった最先端分野で基盤技術となっており、その高精度・高効率という特性は、医用データの可視化においても大きな応用ポテンシャルを示しています。
 
-臨床現場において、CTやMRIのような3次元医用データの正確な可視化は極めて重要です[`<sup>`2`</sup>`](#refer-anchor-2)。しかしながら、従来の手法では、レンダリングの忠実度とリアルタイムなインタラクション性能を両立させることは困難でした[`<sup>`3`</sup>`](#refer-anchor-3)。3DGS技術は、そのフォトリアルな品質と未だかつてないレンダリング速度により、この長年の技術的ボトルネックを解決する新たな契機を提供します。
+臨床現場において、CTやMRIのような3次元医用データの正確な可視化は極めて重要です[<sup>2</sup>](#refer-anchor-2)。しかしながら、従来の手法では、レンダリングの忠実度とリアルタイムなインタラクション性能を両立させることは困難でした[<sup>3</sup>](#refer-anchor-3)。3DGS技術は、そのフォトリアルな品質と未だかつてないレンダリング速度により、この長年の技術的ボトルネックを解決する新たな契機を提供します。
 
 しかし、3DGSを直接医療分野に応用するには、以下の課題が存在します。
 
@@ -22,15 +22,15 @@
 
 1. 高忠実度な3次元画面表現の構築
 
-本研究では、標準的な3DGSフレームワークを改良し、物理ベースのrendering modelを導入します[`<sup>`4`</sup>`](#refer-anchor-4)。具体的には、R²-Gaussian[`<sup>`5`</sup>`](#refer-anchor-5)などの研究に着想を得て、rendering pipelineにおける積分バイアスを補正し、レンダリング結果がCTやMRIデータの背後にある物理的な測定値を忠実に反映できるようにすることで、定量的分析のための強固な基盤を提供します。さらに、multimodal data融合技術を探求し[`<sup>`6`</sup>`](#refer-anchor-6)、CTとMRIといった異なる撮像方式の情報を組み合わせることで、モデルの複雑な解剖学的構造に対する表現能力を向上させます。
+本研究では、標準的な3DGSフレームワークを改良し、物理ベースのrendering modelを導入します[<sup>4</sup>](#refer-anchor-4)。具体的には、R²-Gaussian[<sup>5</sup>](#refer-anchor-5)などの研究に着想を得て、rendering pipelineにおける積分バイアスを補正し、レンダリング結果がCTやMRIデータの背後にある物理的な測定値を忠実に反映できるようにすることで、定量的分析のための強固な基盤を提供します。さらに、multimodal data融合技術を探求し[<sup>6</sup>](#refer-anchor-6)、CTとMRIといった異なる撮像方式の情報を組み合わせることで、モデルの複雑な解剖学的構造に対する表現能力を向上させます。
 
 2. リアルタイムなclipping と探索の実装
 
-臨床的な探索のニーズに応えるため、本研究ではClipGS[`<sup>`7`</sup>`](#refer-anchor-7)などの手法の着想を参考に、各3Dガウシアンに学習可能な clipping属性を導入します。ユーザーが定義した任意のclipping平面に基づき、ガウスの可視性や形状をリアルタイムに判断・調整する軽量な neural networkを設計することで、レンダリング品質を損なうことなく、内部構造の滑らかな観察を実現します。
+臨床的な探索のニーズに応えるため、本研究ではClipGS[<sup>7</sup>](#refer-anchor-7)などの手法の着想を参考に、各3Dガウシアンに学習可能な clipping属性を導入します。ユーザーが定義した任意のclipping平面に基づき、ガウスの可視性や形状をリアルタイムに判断・調整する軽量な neural networkを設計することで、レンダリング品質を損なうことなく、内部構造の滑らかな観察を実現します。
 
 3. semantics に基づく interactive segmentation の統合
 
-特定組織のインテリジェントな識別とsegmentationを実現するため、本研究では各ガウシアンに追加で高次元のsemantic feature vectorを埋め込みます。SurgTPGS[`<sup>`8`</sup>`](#refer-anchor-8)などの研究から着想を得て、この特徴は事前学習済みのVision-Language Model (VLM)[`<sup>`9`</sup>`](#refer-anchor-9)や Segmentation Model (SAM)を介した教師あり学習によって獲得されます。interaction段階では、ユーザーが簡単なクリックや text promptを行うだけで、システムはこれらのセマンティック特徴を利用し、point cloud segmentation network[`<sup>`10`</sup>`](#refer-anchor-10)などのアルゴリズムを用いて、3D空間内で直接的かつ高速に対象領域の精密な segmentationを完了させます。
+特定組織のインテリジェントな識別とsegmentationを実現するため、本研究では各ガウシアンに追加で高次元のsemantic feature vectorを埋め込みます。SurgTPGS[<sup>8</sup>](#refer-anchor-8)などの研究から着想を得て、この特徴は事前学習済みのVision-Language Model (VLM)[<sup>9</sup>](#refer-anchor-9)や Segmentation Model (SAM)を介した教師あり学習によって獲得されます。interaction段階では、ユーザーが簡単なクリックや text promptを行うだけで、システムはこれらのセマンティック特徴を利用し、point cloud segmentation network[<sup>10</sup>](#refer-anchor-10)などのアルゴリズムを用いて、3D空間内で直接的かつ高速に対象領域の精密な segmentationを完了させます。
 
 # 研究計画
 
