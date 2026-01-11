@@ -65,3 +65,4 @@
 
 <div id="refer-anchor-10"></div>
 [10] Papantonakis, P., Kopanas, G., Kerbl, B., Lanvin, A., & Drettakis, G. (2024). Reducing the memory footprint of 3d gaussian splatting. Proceedings of the ACM on Computer Graphics and Interactive Techniques, 7(1), 1-17.
+
